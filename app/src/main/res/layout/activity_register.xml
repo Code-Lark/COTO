@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,23 +34,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.xuexiang.xui.widget.edittext.PasswordEditText
-        app:met_floatingLabel="normal"
         android:id="@+id/et_register_password"
         android:layout_width="260dp"
         android:layout_height="55dp"
+        android:background="@color/xui_config_color_white"
         android:ems="10"
         android:hint="@string/login_password"
         android:inputType="textPassword"
         android:textColor="@color/xui_config_color_edittext_input_text"
         android:textColorHint="@color/xui_config_color_edittext_hint_text"
         android:textStyle="bold"
-        android:background="@color/xui_config_color_white"
-
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:met_floatingLabel="normal" />
 
     <com.xuexiang.xui.widget.edittext.PasswordEditText
         android:id="@+id/et_register_verifyPassword"
@@ -73,67 +72,97 @@
         app:met_floatingLabel="normal" />
 
 
-
     <com.xuexiang.xui.widget.edittext.ClearEditText
-        app:met_floatingLabel="normal"
         android:id="@+id/et_register_userName"
         android:layout_width="260dp"
         android:layout_height="50dp"
+        android:background="@color/xui_config_color_white"
         android:ems="10"
         android:hint="@string/login_username"
         android:inputType="textEmailAddress"
         android:textColor="@color/xui_config_color_edittext_input_text"
         android:textColorHint="@color/xui_config_color_edittext_hint_text"
         android:textStyle="bold"
-        android:background="@color/xui_config_color_white"
-
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:met_floatingLabel="normal" />
+
+
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/xui_config_color_white"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4">
+
+        <com.xuexiang.xui.widget.edittext.ClearEditText
+            android:id="@+id/et_register_verifyCode"
+            android:layout_width="140dp"
+            android:layout_height="55dp"
+            android:background="@color/xui_config_color_white"
+            android:hint="请输入验证码"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/xui_config_color_edittext_input_text"
+            android:textColorHint="@color/xui_config_color_edittext_hint_text"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_register_showCode"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1.5"
+            android:clickable="true"
+            android:onClick="onClick" />
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4350205" />
+        app:layout_constraintGuide_percent="0.38" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.56" />
+        app:layout_constraintGuide_percent="0.51" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.69" />
+        app:layout_constraintGuide_percent="0.64" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.82" />
+        app:layout_constraintGuide_percent="0.77" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -147,12 +176,11 @@
         android:layout_width="260dp"
         android:layout_height="55dp"
         android:text="@string/login_button_register"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
-        app:layout_constraintVertical_bias="0.5" />
-
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

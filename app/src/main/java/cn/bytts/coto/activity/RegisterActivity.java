@@ -23,10 +23,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -39,6 +41,7 @@ import cn.bytts.coto.R;
 import cn.bytts.coto.UserBean;
 import cn.bytts.coto.utils.HttpUtils;
 import cn.bytts.coto.utils.StrUtils;
+import cn.bytts.coto.utils.VerifyCodeUtils;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -47,15 +50,20 @@ import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String url="http://www.coto.bytts.cn/user";
-    private static final String TAG ="RegisterActivity" ;
+    private String url = "http://www.coto.bytts.cn/user";
+    private String realCode;
+    private static final String TAG = "RegisterActivity";
     private Button btRegister;
     private EditText etUsername;
     private EditText etPassword;
     private EditText etVerifyPassword;
+    private EditText etVerifyCode;
+    private ImageView ivVerifyCode;
+
     private String strEmail;
     private String strPassword;
     private String strVerifyPassword;
+    private String strVerifyCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,51 +72,73 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         btRegister = findViewById(R.id.bt_register_register);
         etUsername = findViewById(R.id.et_register_userName);
         etPassword = findViewById(R.id.et_register_password);
         etVerifyPassword = findViewById(R.id.et_register_verifyPassword);
+        etVerifyCode = findViewById(R.id.et_register_verifyCode);
+        ivVerifyCode = findViewById(R.id.iv_register_showCode);
 
+        //注册点击事件
         btRegister.setOnClickListener(this);
+        ivVerifyCode.setOnClickListener(this);
+
+        //将验证码用图片的形式显示出来
+        ivVerifyCode.setImageBitmap(VerifyCodeUtils.getInstance().createBitmap());
+        realCode = VerifyCodeUtils.getInstance().getCode().toLowerCase();
     }
 
     @Override
     public void onClick(View v) {
-//        strEmail=etUsername.getText().toString().trim();
-//        strPassword=etPassword.getText().toString().trim();
-//        strVerifyPassword=etVerifyPassword.getText().toString().trim();
 
-        strEmail="13530926849@qq.com";
-        strPassword="123456";
-        strVerifyPassword="123456";
-        //TODO
-        if(strPassword.isEmpty()||strEmail.isEmpty()){
-            XToast.warning(this,"账号或密码不能为空").show();
-        }else if(!StrUtils.isEmail(strEmail)){
-            XToast.warning(this,"请输入正确的邮箱").show();
-            return;
-        }else if(!strPassword.equals(strVerifyPassword)){
-            Log.d(TAG, "onClick:email ");
-            XToast.warning(this,"请确认输入密码一致").show();
-        }else{
-            postRequest(strEmail,strPassword);
+
+        switch (v.getId()) {
+            case R.id.bt_register_register:
+                //strEmail=etUsername.getText().toString().trim();
+                //strPassword=etPassword.getText().toString().trim();
+                //strVerifyPassword=etVerifyPassword.getText().toString().trim();
+                strVerifyCode=etVerifyCode.getText().toString().trim();
+                strEmail = "13530926849@qq.com";
+                strPassword = "123456";
+                strVerifyPassword = "123456";
+
+                //TODO
+                if (strPassword.isEmpty() || strEmail.isEmpty()) {
+                    XToast.warning(this, "账号或密码不能为空").show();
+                } else if (!StrUtils.isEmail(strEmail)) {
+                    XToast.warning(this, "请输入正确的邮箱").show();
+                    return;
+                } else if (!strPassword.equals(strVerifyPassword)) {
+                    Log.d(TAG, "onClick:email ");
+                    XToast.warning(this, "请确认输入密码一致").show();
+                } else if (!strVerifyCode.equals(realCode)) {
+                    XToast.warning(this, "验证码错误").show();
+                } else {
+                    postRequest(strEmail, strPassword);
+                }
+                break;
+            case R.id.iv_register_showCode:
+                ivVerifyCode.setImageBitmap(VerifyCodeUtils.getInstance().createBitmap());
+                realCode = VerifyCodeUtils.getInstance().getCode().toLowerCase();
         }
+
     }
 
     /**
      * post请求后台
+     *
      * @param username
      * @param password
      */
-    private void postRequest(String username,String password)  {
-        Log.d(TAG,"请求注册");
+    private void postRequest(String username, String password) {
+        Log.d(TAG, "请求注册");
 
 
         //建立请求表单，添加上传服务器的参数
         RequestBody formBody = new FormBody.Builder()
-                .add("username",username)
-                .add("password",password)
+                .add("username", username)
+                .add("password", password)
                 .build();
         //发起请求
         final Request request = new Request.Builder()
@@ -129,9 +159,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     final String result = httpUtils.login(url, strEmail);
                     Log.d(TAG, "结果:" + result);
 
-                    Gson gson=new Gson();
-                    JsonBean jsonBean=gson.fromJson(result, JsonBean.class);
-                    Log.d(TAG, "JsonBean: "+jsonBean.toString());
+                    Gson gson = new Gson();
+                    JsonBean jsonBean = gson.fromJson(result, JsonBean.class);
+                    Log.d(TAG, "JsonBean: " + jsonBean.toString());
                     //UserBean userBean = gson.fromJson(jsonBean.getMsg(),UserBean.class);
 
                     //Log.d(TAG, "gson: "+userBean.toString());
@@ -141,13 +171,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         @Override
                         public void run() {
                             //TODO
-                            if(!jsonBean.getMsg().equals("操作成功")){
-                                Intent intent=new Intent(RegisterActivity.this,LogInActivity.class);
+                            if (!jsonBean.getMsg().equals("操作成功")) {
+                                Intent intent = new Intent(RegisterActivity.this, LogInActivity.class);
                                 startActivity(intent);
-                                XToast.success(RegisterActivity.this,"注册成功").show();
+                                XToast.success(RegisterActivity.this, "注册成功").show();
                                 finish();
-                            }else{
-                                XToast.warning(RegisterActivity.this,"注册失败").show();
+                            } else {
+                                XToast.warning(RegisterActivity.this, "注册失败").show();
                             }
                         }
                     });
