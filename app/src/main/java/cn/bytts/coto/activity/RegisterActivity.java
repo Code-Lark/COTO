@@ -162,16 +162,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Gson gson = new Gson();
                     JsonBean jsonBean = gson.fromJson(result, JsonBean.class);
                     Log.d(TAG, "JsonBean: " + jsonBean.toString());
-                    //UserBean userBean = gson.fromJson(jsonBean.getMsg(),UserBean.class);
+                    UserBean userBean = gson.fromJson(jsonBean.getMessage(),UserBean.class);
 
-                    //Log.d(TAG, "gson: "+userBean.toString());
+                    Log.d(TAG, "gson: "+userBean.toString());
 
                     //更新UI,在UI线程中
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             //TODO
-                            if (!jsonBean.getMsg().equals("操作成功")) {
+                            if (jsonBean.getMessage().equals("操作成功")) {
                                 Intent intent = new Intent(RegisterActivity.this, LogInActivity.class);
                                 startActivity(intent);
                                 XToast.success(RegisterActivity.this, "注册成功").show();

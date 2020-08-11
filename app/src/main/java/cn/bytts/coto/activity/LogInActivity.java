@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,7 @@ import com.google.gson.Gson;
 import com.xuexiang.xui.widget.toast.XToast;
 
 import java.io.IOException;
+import java.io.StringReader;
 
 import cn.bytts.coto.JsonBean;
 import cn.bytts.coto.R;
@@ -46,6 +48,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private String strEmail;
     private String strPassword;
     private String url="http://www.coto.bytts.cn/user";
+    private UserBean userBean;
 
 
     @Override
@@ -119,10 +122,12 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
                     Gson gson=new Gson();
                     JsonBean jsonBean=gson.fromJson(result, JsonBean.class);
-                    Log.d(TAG, "JsonBean: "+jsonBean.toString());
-                    UserBean userBean = gson.fromJson(jsonBean.getMsg(),UserBean.class);
 
-                    Log.d(TAG, "gson: "+userBean.toString());
+                    Log.d(TAG, "JsonBean: "+jsonBean);
+                    //userBean = gson.fromJson(jsonBean.getMessage(),UserBean.class);
+                    userBean=jsonBean.getData();
+
+                    Log.d(TAG, "Usergson: "+ userBean);
 
                     //更新UI,在UI线程中
                     runOnUiThread(new Runnable() {

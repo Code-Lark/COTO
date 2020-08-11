@@ -17,41 +17,34 @@
 
 package cn.bytts.coto;
 
+
 public class JsonBean {
-    private String msg;
-    private String code;
-    private String success;
+    private int code;
+    private String message;
+    private UserBean data;
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
-    public String getSuccess() {
-        return success;
+    public int getCode() {
+        return code;
     }
 
-    public void setSuccess(String success) {
-        this.success = success;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return "UserBean{" +
-                "msg='" + msg + '\'' +
-                ", code='" + code + '\'' +
-                ", success='" + success + '\'' +
-                '}';
+    public String getMessage() {
+        return message;
     }
+
+    public void setData(UserBean data) {
+        this.data = data;
+    }
+
+    public UserBean getData() {
+        return data;
+    }
+
 }

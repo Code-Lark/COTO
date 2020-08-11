@@ -19,40 +19,32 @@ package cn.bytts.coto;
 
 public class UserBean {
     //{"msg":"{\"tag\":100001,\"email\":\"1353092684@qq.com\",\"password\":\"123456\"}","code":200,"success":true}
-    private String tag;
+    //{"code":200,"message":"success","data":{"tag":100001,"email":"1353092684@qq.com","password":"123456"}}
+    private long tag;
     private String email;
     private String password;
 
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
+    public void setTag(long tag) {
         this.tag = tag;
     }
 
-    public String getEmail() {
-        return email;
+    public long getTag() {
+        return tag;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "UserBean{" +
-                "tag='" + tag + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public String getPassword() {
+        return password;
     }
 }
