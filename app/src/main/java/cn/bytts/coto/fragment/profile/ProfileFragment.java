@@ -29,6 +29,7 @@ import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
 import butterknife.BindView;
+import cn.bytts.coto.fragment.UserInfoFragment;
 
 /**
  * @author xuexiang
@@ -42,6 +43,9 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
     SuperTextView menuSettings;
     @BindView(R.id.menu_about)
     SuperTextView menuAbout;
+    @BindView(R.id.menu_userInfo)
+    SuperTextView menuUserInfo;
+
 
     /**
      * @return 返回为 null意为不需要导航栏
@@ -73,6 +77,7 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
     protected void initListeners() {
         menuSettings.setOnSuperTextViewClickListener(this);
         menuAbout.setOnSuperTextViewClickListener(this);
+        menuUserInfo.setOnSuperTextViewClickListener(this);
 
     }
 
@@ -85,6 +90,9 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
                 break;
             case R.id.menu_about:
                 openNewPage(AboutFragment.class);
+                break;
+            case R.id.menu_userInfo:
+                openNewPage(UserInfoFragment.class);
                 break;
             default:
                 break;

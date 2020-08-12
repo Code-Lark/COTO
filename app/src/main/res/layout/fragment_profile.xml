@@ -31,9 +31,10 @@
                 android:paddingTop="20dp">
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/menu_userInfo"
                     style="@style/InfoItem.Account"
                     android:layout_height="60dp"
-                    app:sLeftTextString="头像">
+                    app:sLeftTextString="账号">
 
                     <com.xuexiang.xui.widget.imageview.RadiusImageView
                         android:id="@+id/riv_head_pic"
@@ -46,9 +47,14 @@
 
                 </com.xuexiang.xui.widget.textview.supertextview.SuperTextView>
 
-                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    style="@style/InfoItem.Account"
-                    app:sLeftTextString="账号" />
+<!--                &lt;!&ndash;-->
+<!--                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView-->
+<!--                    style="@style/InfoItem.Account"-->
+<!--                    app:sLeftTextString="账号" />-->
+<!--                    &ndash;&gt;-->
+
+
+
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     style="@style/InfoItem.Account"
