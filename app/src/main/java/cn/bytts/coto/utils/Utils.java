@@ -31,9 +31,15 @@ import android.view.View;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import cn.bytts.coto.R;
 import cn.bytts.coto.core.webview.AgentWebActivity;
+
+import com.luck.picture.lib.PictureSelectionModel;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;
@@ -172,5 +178,24 @@ public final class Utils {
         return darkness >= 0.382;
     }
 
+    /**
+     * 获取图片选择的配置
+     *
+     * @param fragment
+     * @return
+     */
+    public static PictureSelectionModel getPictureSelector(Fragment fragment) {
+        return PictureSelector.create(fragment)
+                .openGallery(PictureMimeType.ofImage())
+                //.theme(SettingSPUtils.getInstance().isUseCustomTheme() ? R.style.XUIPictureStyle_Custom : R.style.XUIPictureStyle)
+                .maxSelectNum(8)
+                .minSelectNum(1)
+                .selectionMode(PictureConfig.MULTIPLE)
+                .previewImage(true)
+                .isCamera(true)
+                .enableCrop(false)
+                .compress(true)
+                .previewEggs(true);
+    }
 
 }

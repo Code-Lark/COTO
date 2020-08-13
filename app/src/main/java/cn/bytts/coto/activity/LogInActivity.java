@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,11 +30,11 @@ import com.google.gson.Gson;
 import com.xuexiang.xui.widget.toast.XToast;
 
 import java.io.IOException;
-import java.io.StringReader;
 
-import cn.bytts.coto.JsonBean;
+import cn.bytts.coto.DAO.UserDAO;
+import cn.bytts.coto.bean.JsonBean;
 import cn.bytts.coto.R;
-import cn.bytts.coto.UserBean;
+import cn.bytts.coto.bean.UserBean;
 import cn.bytts.coto.utils.HttpUtils;
 import cn.bytts.coto.utils.StrUtils;
 
@@ -49,6 +48,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private String strPassword;
     private String url="http://www.coto.bytts.cn/user";
     private UserBean userBean;
+    private UserDAO userDAO=new UserDAO(this);
 
 
     @Override
@@ -85,7 +85,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void requestLogin() {
-        Log.d(TAG,"请求登陆");
+        Log.i(TAG,"请求登陆");
         //strEmail=etEmail.getText().toString().trim();
         //strPassword=etPassword.getText().toString().trim();
         strEmail="1353092684@qq.com";
@@ -97,6 +97,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             XToast.warning(this,"请输入正确的邮箱").show();
             return;
         }else {
+            Log.i(TAG,"postRequest");
             postRequest(strEmail,strPassword);
         }
     }
@@ -135,6 +136,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                         public void run() {
                             //TODO
                             if(password.equals(userBean.getPassword())){
+                                userDAO.insertDate(userBean);
+
                                 XToast.success(LogInActivity.this,"登录成功").show();
                                 Intent intent=new Intent(LogInActivity.this,MainActivity.class);
                                 startActivity(intent);

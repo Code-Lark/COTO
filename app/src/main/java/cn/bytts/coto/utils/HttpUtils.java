@@ -55,15 +55,8 @@ public class HttpUtils {
                 .build();
         Response response = client.newCall(request).execute();
 
-        //TODO  string->toString
+        // string->toString
         String result = response.body().string();
-
         return result;
     }
-
-
-//    public String bolwingJson(String username) {
-//        return "{'username':" + username + "}";
-//        //   "{'username':" + username + ","+"'password':"+password+"}";
-//    }
 }

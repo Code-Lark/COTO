@@ -21,32 +21,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.xuexiang.xui.widget.toast.XToast;
 
 import java.io.IOException;
 
-import cn.bytts.coto.JsonBean;
+import cn.bytts.coto.bean.JsonBean;
 import cn.bytts.coto.R;
-import cn.bytts.coto.UserBean;
+import cn.bytts.coto.bean.UserBean;
 import cn.bytts.coto.utils.HttpUtils;
 import cn.bytts.coto.utils.StrUtils;
 import cn.bytts.coto.utils.VerifyCodeUtils;
 import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 

@@ -17,9 +17,11 @@
 
 package cn.bytts.coto.fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +32,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.entity.LocalMedia;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
@@ -44,14 +49,18 @@ import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xutil.data.DateUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import cn.bytts.coto.R;
 import cn.bytts.coto.activity.MainActivity;
 import cn.bytts.coto.core.BaseFragment;
+import cn.bytts.coto.utils.Utils;
 import cn.bytts.coto.utils.XToastUtils;
-import me.iwf.photopicker.PhotoPicker;
+
+import static android.app.Activity.RESULT_OK;
 
 
 @Page(name = "账号")
@@ -81,6 +90,7 @@ public class UserInfoFragment extends BaseFragment implements SuperTextView.OnSu
     SuperTextView menuSavaChange;
 
     private TimePickerView mDatePicker;
+    private List<LocalMedia> mSelectList = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -98,14 +108,17 @@ public class UserInfoFragment extends BaseFragment implements SuperTextView.OnSu
         menuHobby.setOnSuperTextViewClickListener(this);
         menuSavaChange.setOnSuperTextViewClickListener(this);
 
-
-//        // TODO: 2019-10-09 初始化数据
 //        RadiusImageView ivAvatar = findViewById(R.id.iv_avatar);
 //        TextView tvAvatar = findViewById(R.id.tv_avatar);
 //        TextView tvSign = findViewById(R.id.tv_sign);
 //        ivAvatar.setImageResource(R.drawable.ic_default_head);
 //        tvAvatar.setText(R.string.app_name);
 //        tvSign.setText("这个家伙很懒，什么也没有留下～～");
+
+        //TODO:  初始化数据
+        menuGrade.setRightBottomString("4");
+
+
     }
 
 
@@ -114,10 +127,17 @@ public class UserInfoFragment extends BaseFragment implements SuperTextView.OnSu
     public void onClick(SuperTextView superTextView) {
         switch (superTextView.getId()) {
             case R.id.menu_userInfo:
-                //TODO 修改头像
-                PhotoPicker.builder()
-                        .setPhotoCount(1)
-                        .start(getContext(), this);
+                //TODO 修改头像,看看能不能用好看的图片选择器
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 1);
+
+//                Utils.getPictureSelector(this)
+//                        .selectionMedia(mSelectList)
+//                        .maxSelectNum(1)
+//                        .isCamera(false)
+//                        .selectionMode(PictureConfig.SINGLE)
+//                        .forResult(PictureConfig.CHOOSE_REQUEST);
                 break;
             case R.id.menu_grade:
                 //查看经验
@@ -225,4 +245,20 @@ public class UserInfoFragment extends BaseFragment implements SuperTextView.OnSu
                 .negativeText(R.string.gm_cancel)
                 .show();
     }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK) {
+//            switch (requestCode) {
+//                case PictureConfig.CHOOSE_REQUEST:
+//                    // 结果回调
+//                    List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//    }
+
 }
