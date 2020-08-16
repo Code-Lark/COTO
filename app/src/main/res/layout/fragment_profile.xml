@@ -33,56 +33,53 @@
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     android:id="@+id/menu_userInfo"
                     style="@style/InfoItem.Account"
-                    android:layout_height="60dp"
-                    app:sLeftTextString="账号">
+                    android:layout_height="90dp"
+                    app:sLeftIconRes="@drawable/ic_default_head"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sLeftTextString="账号" />
 
-                    <com.xuexiang.xui.widget.imageview.RadiusImageView
-                        android:id="@+id/riv_head_pic"
-                        style="@style/RadiusImageView.Circle"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toStartOf="@id/sRightImgId"
-                        app:srcCompat="@drawable/ic_default_head" />
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    style="@style/InfoItem.Account"
+                    app:sLeftIconRes="@drawable/ic_baseline_message_24"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sLeftTextString="消息通知" />
 
-                </com.xuexiang.xui.widget.textview.supertextview.SuperTextView>
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    style="@style/InfoItem.Account"
+                    app:sLeftIconRes="@drawable/ic_baseline_history_24"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sLeftTextString="最近浏览" />
 
-<!--                &lt;!&ndash;-->
 <!--                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView-->
 <!--                    style="@style/InfoItem.Account"-->
-<!--                    app:sLeftTextString="账号" />-->
-<!--                    &ndash;&gt;-->
-
-
-
+<!--                    app:sLeftTextString="我的书单（未开发）" />-->
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     style="@style/InfoItem.Account"
-                    app:sLeftTextString="通知" />
+                    app:sLeftIconRes="@drawable/ic_baseline_share_24"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sLeftTextString="分享应用" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     style="@style/InfoItem.Account"
-                    app:sDividerLineType="none"
-                    app:sLeftTextString="收藏" />
+                    app:sLeftIconRes="@drawable/ic_baseline_nights_stay_24"
+                    app:sLeftViewMarginLeft="20dp"
+                    app:sRightViewType="switchBtn"
+                    app:sSwitchIsChecked="true"
+                    app:sSwitchMinWidth="55dp"
+                    app:sLeftTextString="夜间模式" />
 
-
-                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    style="@style/InfoItem.Account"
-                    android:layout_marginTop="20dp"
-                    app:sDividerLineType="none"
-                    app:sLeftTextString="意见反馈" />
+<!--                app:sThumbResource="@drawable/thumb"-->
+<!--                app:sTrackResource="@drawable/track"-->
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     android:id="@+id/menu_settings"
                     style="@style/InfoItem.Account"
+                    app:sLeftIconRes="@drawable/ic_menu_settings"
+                    app:sLeftViewMarginLeft="20dp"
                     android:layout_marginTop="20dp"
                     app:sLeftTextString="设置" />
 
-                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:id="@+id/menu_about"
-                    style="@style/InfoItem.Account"
-                    app:sDividerLineType="none"
-                    app:sLeftTextString="关于" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

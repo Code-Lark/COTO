@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/D:/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/favorite/baseline_favorite_24.xml" />
+                                      <entry key="url" value="jar:file:/D:/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/book/baseline_book_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_favorite_24" />
+                            <entry key="color" value="299ee3" />
+                            <entry key="outputName" value="ic_login_password_24" />
                             <entry key="sourceFile" value="D:\Documents\GitHub\COTO" />
                           </map>
                         </option>

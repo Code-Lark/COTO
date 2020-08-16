@@ -37,12 +37,10 @@ import cn.bytts.coto.fragment.UserInfoFragment;
  */
 @Page(anim = CoreAnim.none)
 public class ProfileFragment extends BaseFragment implements SuperTextView.OnSuperTextViewClickListener {
-    @BindView(R.id.riv_head_pic)
-    RadiusImageView rivHeadPic;
+//    @BindView(R.id.riv_head_pic)
+//    RadiusImageView rivHeadPic;
     @BindView(R.id.menu_settings)
     SuperTextView menuSettings;
-    @BindView(R.id.menu_about)
-    SuperTextView menuAbout;
     @BindView(R.id.menu_userInfo)
     SuperTextView menuUserInfo;
 
@@ -76,9 +74,7 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
     @Override
     protected void initListeners() {
         menuSettings.setOnSuperTextViewClickListener(this);
-        menuAbout.setOnSuperTextViewClickListener(this);
         menuUserInfo.setOnSuperTextViewClickListener(this);
-
     }
 
     @SingleClick
@@ -87,9 +83,6 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
         switch(view.getId()) {
             case R.id.menu_settings:
                 openNewPage(SettingsFragment.class);
-                break;
-            case R.id.menu_about:
-                openNewPage(AboutFragment.class);
                 break;
             case R.id.menu_userInfo:
                 openNewPage(UserInfoFragment.class);

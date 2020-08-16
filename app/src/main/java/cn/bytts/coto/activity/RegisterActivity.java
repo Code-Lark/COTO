@@ -35,7 +35,7 @@ import java.io.IOException;
 import cn.bytts.coto.bean.JsonBean;
 import cn.bytts.coto.R;
 import cn.bytts.coto.bean.UserBean;
-import cn.bytts.coto.utils.HttpUtils;
+import cn.bytts.coto.httpservice.HttpUtils;
 import cn.bytts.coto.utils.StrUtils;
 import cn.bytts.coto.utils.VerifyCodeUtils;
 import okhttp3.FormBody;
@@ -150,7 +150,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 //String user = httpUtils.bolwingJson(username);
                 Log.d(TAG, "url:" + url);
                 try {
-                    final String result = httpUtils.login(url, strEmail);
+                    //TODO:  注册功能实现
+                    final String result = httpUtils.login(strEmail);
                     Log.d(TAG, "结果:" + result);
 
                     Gson gson = new Gson();

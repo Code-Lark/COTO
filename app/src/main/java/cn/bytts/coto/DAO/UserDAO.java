@@ -28,7 +28,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bytts.coto.UserDBHelper;
+import cn.bytts.coto.db.UserDBHelper;
 import cn.bytts.coto.bean.UserBean;
 
 public class UserDAO {

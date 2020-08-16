@@ -24,9 +24,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xui.widget.toast.XToast;
 
 import java.io.IOException;
@@ -35,15 +36,15 @@ import cn.bytts.coto.DAO.UserDAO;
 import cn.bytts.coto.bean.JsonBean;
 import cn.bytts.coto.R;
 import cn.bytts.coto.bean.UserBean;
-import cn.bytts.coto.utils.HttpUtils;
+import cn.bytts.coto.httpservice.HttpUtils;
 import cn.bytts.coto.utils.StrUtils;
 
 public class LogInActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG ="LogInActivity" ;
-    private EditText etEmail;
-    private EditText etPassword;
+    private SuperTextView etEmail;
+    private SuperTextView etPassword;
     private Button btLogin;
-    private Button btRegister;
+    private TextView btRegister;
     private String strEmail;
     private String strPassword;
     private String url="http://www.coto.bytts.cn/user";
@@ -118,14 +119,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                 Log.d(TAG, "url:" + url+"?email="+strEmail);
 
                 try {
-                    final String result = httpUtils.login(url, strEmail);
+                    final String result = httpUtils.login(strEmail);
                     Log.d(TAG, "结果:" + result);
 
                     Gson gson=new Gson();
                     JsonBean jsonBean=gson.fromJson(result, JsonBean.class);
 
                     Log.d(TAG, "JsonBean: "+jsonBean);
-                    //userBean = gson.fromJson(jsonBean.getMessage(),UserBean.class);
                     userBean=jsonBean.getData();
 
                     Log.d(TAG, "Usergson: "+ userBean);

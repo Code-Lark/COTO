@@ -41,10 +41,12 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
     SuperTextView menuPush;
     @BindView(R.id.menu_helper)
     SuperTextView menuHelper;
-    @BindView(R.id.menu_change_account)
-    SuperTextView menuChangeAccount;
     @BindView(R.id.menu_logout)
     SuperTextView menuLogout;
+    @BindView(R.id.menu_about)
+    SuperTextView menuAbout;
+    @BindView(R.id.menu_feedback)
+    SuperTextView menuFeedback;
 
     @Override
     protected int getLayoutId() {
@@ -57,8 +59,9 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
         menuPrivacy.setOnSuperTextViewClickListener(this);
         menuPush.setOnSuperTextViewClickListener(this);
         menuHelper.setOnSuperTextViewClickListener(this);
-        menuChangeAccount.setOnSuperTextViewClickListener(this);
         menuLogout.setOnSuperTextViewClickListener(this);
+        menuAbout.setOnSuperTextViewClickListener(this);
+        menuFeedback.setOnSuperTextViewClickListener(this);
     }
 
     @SingleClick
@@ -71,7 +74,12 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
             case R.id.menu_helper:
                 XToastUtils.toast(superTextView.getLeftString());
                 break;
-            case R.id.menu_change_account:
+            case R.id.menu_about:
+                openNewPage(AboutFragment.class);
+                break;
+            case R.id.menu_feedback:
+                //TODO: 反馈意见发送邮件
+                break;
             case R.id.menu_logout:
                 XToastUtils.toast(superTextView.getCenterString());
                 break;
