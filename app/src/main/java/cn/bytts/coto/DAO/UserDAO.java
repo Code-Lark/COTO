@@ -35,7 +35,7 @@ public class UserDAO {
     private static final String TAG = "UserDao";
 
     // 列定义
-    private final String[] USER_COLUMNS = new String[] {"Tag", "Email","Password"};
+    private final String[] TABLE_COLUMNS = new String[] {"Tag", "Email","Password"};
 
     private Context context;
     private UserDBHelper userDBHelper;
@@ -116,7 +116,7 @@ public class UserDAO {
         try {
             db = userDBHelper.getReadableDatabase();
             // select * from Orders
-            cursor = db.query(UserDBHelper.TABLE_NAME, USER_COLUMNS, null, null, null, null, null);
+            cursor = db.query(UserDBHelper.TABLE_NAME, TABLE_COLUMNS, null, null, null, null, null);
 
             if (cursor.getCount() > 0) {
                 List<UserBean> orderList = new ArrayList<UserBean>(cursor.getCount());

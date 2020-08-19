@@ -119,4 +119,21 @@ public class UserInfoBean {
     public String getHeadPath() {
         return headPath;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfoBean{" +
+                "tag=" + tag +
+                ", grade=" + grade +
+                ", name='" + name + '\'' +
+                ", point=" + point +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", hobby=" + hobby +
+                ", award=" + award +
+                ", exp=" + exp +
+                ", desc='" + desc + '\'' +
+                ", headPath='" + headPath + '\'' +
+                '}';
+    }
 }

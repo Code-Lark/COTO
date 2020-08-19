@@ -27,10 +27,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xui.widget.toast.XToast;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 import cn.bytts.coto.DAO.UserDAO;
 import cn.bytts.coto.bean.JsonBean;
@@ -48,7 +50,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private String strEmail;
     private String strPassword;
     private String url="http://www.coto.bytts.cn/user";
-    private UserBean userBean;
+    private UserBean userBean=new UserBean();
     private UserDAO userDAO=new UserDAO(this);
 
 
@@ -75,7 +77,6 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bt_login_login:
-                //TODO
                 requestLogin();
                 break;
             case R.id.bt_login_register:
@@ -123,18 +124,19 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                     Log.d(TAG, "结果:" + result);
 
                     Gson gson=new Gson();
-                    JsonBean jsonBean=gson.fromJson(result, JsonBean.class);
+                    JsonBean<UserBean> jsonBean=gson.fromJson(result, new TypeToken<JsonBean<UserBean>>() {}.getType());
 
-                    Log.d(TAG, "JsonBean: "+jsonBean);
-                    userBean=jsonBean.getData();
+                    Log.d(TAG, "JsonBean: "+jsonBean.toString());
+                    userBean=(UserBean)jsonBean.getData();
 
-                    Log.d(TAG, "Usergson: "+ userBean);
+                    Log.d(TAG, "Usergson: "+ userBean.getTag());
+                    Log.d(TAG, "Usergson: "+ userBean.getEmail());
+                    Log.d(TAG, "Usergson: "+ userBean.getPassword());
 
                     //更新UI,在UI线程中
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //TODO
                             if(password.equals(userBean.getPassword())){
                                 userDAO.insertDate(userBean);
 

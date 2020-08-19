@@ -48,6 +48,8 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
     protected void onCreateActivity() {
         initSplashView(R.drawable.xui_config_bg_splash);
         startSplash(false);
+
+        GloVar.setTAG(100001);
     }
 
 

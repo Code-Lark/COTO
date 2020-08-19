@@ -17,6 +17,8 @@
 
 package cn.bytts.coto.httpservice;
 
+import android.util.Log;
+
 import java.io.IOException;
 
 import okhttp3.FormBody;
@@ -39,11 +41,9 @@ public class HttpUtils {
                 .build();
         Response response = client.newCall(request).execute();
 
-        //TODO  string->toString
         String result = response.body().string();
         return result;
     }
-
 
     /**
      * 通过get方法进行网络连接
@@ -52,14 +52,15 @@ public class HttpUtils {
      * @return      string形式的json
      * @throws IOException
      */
-    public String get(String table,String tag) throws IOException {
+    public String get(String table,long tag) throws IOException {
+        Log.e("TAG", url+table+"?tag="+tag);
         Request request = new Request.Builder()
                 .url(url+table+ "?tag=" + tag)
                 .build();
         Response response = client.newCall(request).execute();
 
-        //TODO  string->toString
         String result = response.body().string();
+        Log.e("TAG", result);
 
         return result;
     }

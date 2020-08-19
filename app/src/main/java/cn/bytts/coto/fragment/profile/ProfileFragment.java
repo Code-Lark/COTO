@@ -18,14 +18,12 @@
 package cn.bytts.coto.fragment.profile;
 
 import cn.bytts.coto.core.BaseFragment;
-import cn.bytts.coto.fragment.AboutFragment;
 import cn.bytts.coto.fragment.SettingsFragment;
 import cn.bytts.coto.R;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
-import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 
 import butterknife.BindView;
@@ -41,7 +39,7 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
 //    RadiusImageView rivHeadPic;
     @BindView(R.id.menu_settings)
     SuperTextView menuSettings;
-    @BindView(R.id.menu_userInfo)
+    @BindView(R.id.menu_name)
     SuperTextView menuUserInfo;
 
 
@@ -84,7 +82,7 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
             case R.id.menu_settings:
                 openNewPage(SettingsFragment.class);
                 break;
-            case R.id.menu_userInfo:
+            case R.id.menu_name:
                 openNewPage(UserInfoFragment.class);
                 break;
             default:

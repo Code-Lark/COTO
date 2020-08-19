@@ -32,16 +32,16 @@
                 android:paddingTop="20dp">
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:id="@+id/menu_userInfo"
+                    android:id="@+id/menu_name"
                     style="@style/InfoItem.Account"
-                    android:layout_height="60dp"
-                    app:sLeftTextString="账号">
+                    android:layout_height="70dp"
+                    app:sLeftTextString="用户名">
 
                     <com.xuexiang.xui.widget.imageview.RadiusImageView
                         android:id="@+id/riv_head_pic"
                         style="@style/RadiusImageView.Circle"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_centerVertical="true"
                         android:layout_toStartOf="@id/sRightImgId"
                         app:srcCompat="@drawable/ic_default_head" />
@@ -49,17 +49,22 @@
                 </com.xuexiang.xui.widget.textview.supertextview.SuperTextView>
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/menu_desc"
+                    style="@style/InfoItem.Account"
+                    app:sLeftTextString="简介" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     android:id="@+id/menu_grade"
                     style="@style/InfoItem.Account"
                     app:sLeftTextString="等级" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:id="@+id/menu_coin"
+                    android:id="@+id/menu_point"
                     style="@style/InfoItem.Account"
                     app:sLeftTextString="积分" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:id="@+id/menu_support"
+                    android:id="@+id/menu_award"
                     style="@style/InfoItem.Account"
                     app:sLeftTextString="收到的赞" />
 
@@ -76,6 +81,7 @@
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     android:id="@+id/menu_hobby"
                     style="@style/InfoItem.Account"
+                    app:sRightBottomLines="15"
                     app:sLeftTextString="偏好" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView

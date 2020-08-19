@@ -23,8 +23,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import cn.bytts.coto.R;
+
 public class UserDBHelper extends SQLiteOpenHelper {
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = R.string.db_version;
     private static final String DB_NAME = "userMsg.db";
     public static final String TABLE_NAME = "user";
 

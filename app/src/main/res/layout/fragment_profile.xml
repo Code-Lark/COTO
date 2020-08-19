@@ -31,7 +31,7 @@
                 android:paddingTop="20dp">
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:id="@+id/menu_userInfo"
+                    android:id="@+id/menu_name"
                     style="@style/InfoItem.Account"
                     android:layout_height="90dp"
                     app:sLeftIconRes="@drawable/ic_default_head"

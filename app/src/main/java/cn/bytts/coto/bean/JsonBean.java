@@ -18,10 +18,10 @@
 package cn.bytts.coto.bean;
 
 
-public class JsonBean {
+public class JsonBean<T> {
     private int code;
     private String message;
-    private UserBean data;
+    private T data;
 
     public void setCode(int code) {
         this.code = code;
@@ -39,12 +39,20 @@ public class JsonBean {
         return message;
     }
 
-    public void setData(UserBean data) {
+    public void setData(T data) {
         this.data = data;
     }
 
-    public UserBean getData() {
+    public T getData() {
         return data;
     }
 
+    @Override
+    public String toString() {
+        return "JsonBean{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }
