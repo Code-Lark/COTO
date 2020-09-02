@@ -18,11 +18,13 @@
 package cn.bytts.coto.fragment;
 
 import cn.bytts.coto.core.BaseFragment;
+import cn.bytts.coto.core.webview.AgentWebActivity;
 import cn.bytts.coto.utils.XToastUtils;
 import cn.bytts.coto.R;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
+import com.xuexiang.xui.widget.toast.XToast;
 
 import butterknife.BindView;
 
@@ -69,8 +71,14 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
     public void onClick(SuperTextView superTextView) {
         switch(superTextView.getId()) {
             case R.id.menu_common:
+                XToastUtils.toast("待完成");
+                break;
             case R.id.menu_privacy:
+                XToastUtils.toast("待完成");
+                break;
             case R.id.menu_push:
+                XToastUtils.toast("待完成");
+                break;
             case R.id.menu_helper:
                 XToastUtils.toast(superTextView.getLeftString());
                 break;
@@ -79,6 +87,8 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
                 break;
             case R.id.menu_feedback:
                 //TODO: 反馈意见发送邮件
+                XToastUtils.toast("待完成");
+                AgentWebActivity.goWeb(getContext(), getString(R.string.url_feedback_link));
                 break;
             case R.id.menu_logout:
                 XToastUtils.toast(superTextView.getCenterString());

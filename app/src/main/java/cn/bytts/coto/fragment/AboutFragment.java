@@ -17,7 +17,11 @@
 
 package cn.bytts.coto.fragment;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cn.bytts.coto.R;
 import cn.bytts.coto.core.BaseFragment;
@@ -31,6 +35,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
+import cn.bytts.coto.utils.XToastUtils;
+
+import static androidx.core.content.ContextCompat.getSystemService;
 
 /**
  * @author xuexiang
@@ -54,12 +61,21 @@ public class AboutFragment extends BaseFragment {
     @Override
     protected void initViews() {
         mVersionTextView.setText(String.format("版本号：%s", AppUtils.getAppVersionName()));
+        //获取剪贴板管理器：
+        ClipboardManager cm = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
 
         XUIGroupListView.newSection(getContext())
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_homepage)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_project_github)))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_author_github)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_author_github)))
-                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_donation_link)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_donation_link)))
-                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_add_qq_group)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_add_qq_group)))
+                //.addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_donation_link)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_donation_link)))
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_add_qq_group)), v ->{
+                    // 创建普通字符型ClipData
+                    ClipData mClipData = ClipData.newPlainText("Label", "1013697413");
+                    // 将ClipData内容放到系统剪贴板里。
+                    cm.setPrimaryClip(mClipData);
+                    XToastUtils.toast("已复制到剪切板");
+                    //Toast.makeText(getContext(),"已复制到剪切板",Toast.LENGTH_LONG).show();
+                })
                 .addTo(mAboutGroupListView);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy", Locale.CHINA);

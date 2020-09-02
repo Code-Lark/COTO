@@ -236,7 +236,7 @@ public class UserDAO {
     }
 
     /**
-     * 将查找到的数据转换成Order类
+     * 将查找到的数据转换成Data类
      */
     private UserBean parseOrder(Cursor cursor){
         UserBean userBean = new UserBean();

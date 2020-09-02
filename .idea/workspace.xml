@@ -11,46 +11,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46bb6375-3214-4f53-b9b5-91d25d0d49fd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/DAO/HobbyDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/DAO/UserInfoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/activity/GloVar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/base/BaseDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/db/HobbyDBHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/db/UserInfoDBHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_glo_var.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/activity/LogInActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/activity/LogInActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/activity/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/activity/SplashActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/bean/JsonBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/bean/JsonBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/bean/UserInfoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/bean/UserInfoBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/db/UserDBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/db/UserDBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/fragment/UserInfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/fragment/UserInfoFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/fragment/profile/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/fragment/profile/ProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/httpservice/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cn/bytts/coto/httpservice/HttpUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_info.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-    </list>
+    <list default="true" id="46bb6375-3214-4f53-b9b5-91d25d0d49fd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="HXJNW18503002503" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -95,7 +62,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-13T08:12:45.127Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/大创/数据库" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MySchool" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -233,10 +200,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="639" y="224" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1596517105784" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597825448567">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1598947607885">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597825448567" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1598947607885" />
     <state width="1493" height="168" key="GridCell.Tab.0.bottom" timestamp="1597828326953">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -277,10 +244,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1597295164117" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1597806011999">
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1598947600505">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1597806011999" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1598947600505" />
     <state x="377" y="114" width="782" height="596" key="find.popup" timestamp="1597065570601">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

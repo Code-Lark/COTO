@@ -51,7 +51,7 @@ public class UserInfoDAO extends BaseDAO<UserInfoBean> {
         try {
             db = userInfoDBHelper.getReadableDatabase();
             // select count(Id) from Orders
-            cursor = db.query(UserDBHelper.TABLE_NAME, new String[]{"COUNT(Tag)"}, null, null, null, null, null);
+            cursor = db.query(UserInfoDBHelper.TABLE_NAME, new String[]{"COUNT(Tag)"}, null, null, null, null, null);
 
             if (cursor.moveToFirst()) {
                 count = cursor.getInt(0);

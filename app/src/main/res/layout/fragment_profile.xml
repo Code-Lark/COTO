@@ -55,6 +55,7 @@
 <!--                    app:sLeftTextString="我的书单（未开发）" />-->
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/menu_share"
                     style="@style/InfoItem.Account"
                     app:sLeftIconRes="@drawable/ic_baseline_share_24"
                     app:sLeftViewMarginLeft="20dp"

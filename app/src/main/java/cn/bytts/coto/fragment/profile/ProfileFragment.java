@@ -29,6 +29,7 @@ import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import butterknife.BindView;
 import cn.bytts.coto.fragment.UserInfoFragment;
 
+
 /**
  * @author xuexiang
  * @since 2019-10-30 00:18
@@ -41,6 +42,8 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
     SuperTextView menuSettings;
     @BindView(R.id.menu_name)
     SuperTextView menuUserInfo;
+    @BindView(R.id.menu_share)
+    SuperTextView menuShare;
 
 
     /**
@@ -66,13 +69,13 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
      */
     @Override
     protected void initViews() {
-
     }
 
     @Override
     protected void initListeners() {
         menuSettings.setOnSuperTextViewClickListener(this);
         menuUserInfo.setOnSuperTextViewClickListener(this);
+        menuShare.setOnSuperTextViewClickListener(this);
     }
 
     @SingleClick
@@ -85,6 +88,9 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
             case R.id.menu_name:
                 openNewPage(UserInfoFragment.class);
                 break;
+            case R.id.menu_share:
+
+                getSharedElementEnterTransition();
             default:
                 break;
         }
