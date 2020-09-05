@@ -42,7 +42,7 @@ import cn.bytts.coto.core.BaseFragment;
 import cn.bytts.coto.fragment.SettingsFragment;
 import cn.bytts.coto.fragment.news.NewsFragment;
 import cn.bytts.coto.fragment.profile.ProfileFragment;
-import cn.bytts.coto.fragment.trending.TrendingFragment;
+import cn.bytts.coto.fragment.bookshelf.BookshelfFragment;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.ResUtils;
@@ -94,6 +94,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         initViews();
 
         initListeners();
+
     }
 
     @Override
@@ -112,12 +113,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         //主页内容填充
         BaseFragment[] fragments = new BaseFragment[]{
                 new NewsFragment(),
-                new TrendingFragment(),
+                new BookshelfFragment(),
                 new ProfileFragment()
         };
         FragmentAdapter<BaseFragment> adapter = new FragmentAdapter<>(getSupportFragmentManager(), fragments);
         viewPager.setOffscreenPageLimit(mTitles.length - 1);
         viewPager.setAdapter(adapter);
+
     }
 
     private void initHeader() {

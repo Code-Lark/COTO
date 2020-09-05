@@ -58,14 +58,14 @@
     </string-array>
 
     <string-array name="grid_titles_entry">
-        <item>美食</item>
-        <item>甜点</item>
-        <item>烧烤</item>
-        <item>夜宵</item>
-        <item>水果</item>
-        <item>药品</item>
-        <item>蔬菜</item>
-        <item>跑腿</item>
+        <item>玄幻</item>
+        <item>武侠</item>
+        <item>都市</item>
+        <item>言情</item>
+        <item>漫改</item>
+        <item>科幻</item>
+        <item>历史</item>
+        <item>军事</item>
     </string-array>
 
     <!--  修改这里的图标  -->

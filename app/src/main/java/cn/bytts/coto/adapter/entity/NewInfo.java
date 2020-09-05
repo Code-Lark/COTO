@@ -28,7 +28,7 @@ public class NewInfo {
     /**
      * 用户名
      */
-    private String UserName = "xuexiangjys";
+    private String UserName = "创too";
     /**
      * 标签
      */

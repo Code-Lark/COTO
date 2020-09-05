@@ -49,8 +49,6 @@ import cn.bytts.coto.DAO.HobbyDAO;
 import cn.bytts.coto.DAO.UserInfoDAO;
 import cn.bytts.coto.R;
 import cn.bytts.coto.activity.GloVar;
-import cn.bytts.coto.activity.LogInActivity;
-import cn.bytts.coto.activity.MainActivity;
 import cn.bytts.coto.bean.JsonBean;
 import cn.bytts.coto.bean.UserInfoBean;
 import cn.bytts.coto.core.BaseFragment;

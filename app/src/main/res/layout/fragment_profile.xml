@@ -64,6 +64,7 @@
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     style="@style/InfoItem.Account"
                     app:sLeftIconRes="@drawable/ic_baseline_nights_stay_24"
+                    android:id="@+id/menu_moon_modle"
                     app:sLeftViewMarginLeft="20dp"
                     app:sRightViewType="switchBtn"
                     app:sSwitchIsChecked="true"

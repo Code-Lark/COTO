@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.textview.label.LabelImageView
+        android:layout_height="110dp"
+        android:layout_width="90dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cover_txt"
+        android:id="@+id/imageView1"
+        android:text="天龙八部"
+        app:label_text="New"
+        android:padding="15dp"
+        android:textColor="#000000" />
+
+
+
+</LinearLayout>
