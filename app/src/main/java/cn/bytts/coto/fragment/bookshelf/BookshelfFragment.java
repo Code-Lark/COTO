@@ -17,20 +17,27 @@
 
 package cn.bytts.coto.fragment.bookshelf;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import cn.bytts.coto.DAO.UserInfoDAO;
 import cn.bytts.coto.R;
 import cn.bytts.coto.activity.GloVar;
+import cn.bytts.coto.activity.ReadBook;
+import cn.bytts.coto.adapter.BookDialogAdapter;
 import cn.bytts.coto.adapter.ShlefAdapter;
 import cn.bytts.coto.adapter.base.delegate.SimpleDelegateAdapter;
 import cn.bytts.coto.adapter.entity.NewInfo;
@@ -51,6 +58,8 @@ import com.google.gson.reflect.TypeToken;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
+import com.xuexiang.xui.widget.dialog.materialdialog.CustomMaterialDialog;
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.statelayout.MultipleStatusView;
 import com.xuexiang.xui.widget.statelayout.StatefulLayout;
 
@@ -62,6 +71,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.xuexiang.xui.XUI.getContext;
 import static com.xuexiang.xutil.XUtil.getPackageManager;
 import static com.xuexiang.xutil.XUtil.runOnUiThread;
 
@@ -132,8 +142,30 @@ public class BookshelfFragment extends BaseFragment {
                 if(arg2>=data.length){
 
                 }else{
-                    Toast.makeText(getContext(), ""+arg2, Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent();
+                    intent.setClass(getContext(), ReadBook.class);
+                    startActivity(intent);
+
                 }
+            }
+
+        });
+
+        bookShelf.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i(TAG,"setOnItemLongClickListener");
+
+                new MaterialDialog.Builder(getContext())
+                        .content("是否删除")
+                        .positiveText(R.string.lab_yes)
+                        .negativeText(R.string.lab_no)
+                        .onPositive((dialog, which) -> {
+                            Toast.makeText(getContext(), "删除", Toast.LENGTH_SHORT).show();
+                        })
+                        .show();
+
+                return true;
             }
         });
 
@@ -149,6 +181,9 @@ public class BookshelfFragment extends BaseFragment {
         booklist=new ArrayList<>();
 
         String str=FileCacheUtil.getCache(getContext(),"bookShelf.txt");
+
+
+        Toast.makeText(getContext(), str, Toast.LENGTH_SHORT).show();
 
 
 //        BookDatasBean bookDatasBean=new BookDatasBean();
@@ -172,6 +207,8 @@ public class BookshelfFragment extends BaseFragment {
             try {
 
                 final String result = httpUtils.get("bookShelf", 100001);
+
+                FileCacheUtil.setCache(result,getContext(),"bookShelf.txt",Context.MODE_PRIVATE);
 
                 Gson gson = new Gson();
                 JSONObject jsonObject=new JSONObject(result);

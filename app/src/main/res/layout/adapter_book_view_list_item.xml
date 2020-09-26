@@ -14,7 +14,7 @@
         android:id="@+id/imageView1"
         android:text="天龙八部"
         app:label_text="New"
-        android:padding="15dp"
+        android:padding="13dp"
         android:textColor="#000000" />
 
     <TextView
