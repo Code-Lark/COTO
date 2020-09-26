@@ -26,16 +26,23 @@ import android.widget.TextView;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xui.widget.textview.label.LabelImageView;
 
+import java.util.List;
+
 import cn.bytts.coto.R;
+import cn.bytts.coto.bean.BookDatasBean;
 
 import static com.xuexiang.xui.XUI.getContext;
 
 public class ShlefAdapter extends BaseAdapter {
-    int []data;
+    String[] data;
     String[]name;
-    public ShlefAdapter(int[] data, String[] name){
-        this.data=data;
-        this.name=name;
+    public ShlefAdapter(List<BookDatasBean> bookDatasBean){
+        data=new String[bookDatasBean.size()];
+        name=new String[bookDatasBean.size()];
+        for(int i=0;i<bookDatasBean.size();i++){
+            data[i]=bookDatasBean.get(i).getBook().getCoverPath();
+            name[i]=bookDatasBean.get(i).getBook().getName();
+        }
     }
     @Override
     public int getCount() {
@@ -62,14 +69,17 @@ public class ShlefAdapter extends BaseAdapter {
         contentView= LayoutInflater.from(getContext()).inflate(R.layout.adapter_book_view_list_item, null);
 
         LabelImageView view=(LabelImageView) contentView.findViewById(R.id.imageView1);
+        TextView textView=(TextView) contentView.findViewById(R.id.book_name);
         if(data.length>position){
             if(position<name.length){
                 //TODO 设置书籍内容
                 //view.setText(name[position]);
+                //view.setLabelText(name[position]);
+                textView.setText(name[position]);
             }
-            view.setBackgroundResource(data[position]);
+            view.setBackgroundResource(R.drawable.cover_txt);
         }else{
-            view.setBackgroundResource(data[0]);
+            view.setBackgroundResource(R.drawable.cover_txt);
             view.setClickable(false);
             view.setVisibility(View.INVISIBLE);
         }

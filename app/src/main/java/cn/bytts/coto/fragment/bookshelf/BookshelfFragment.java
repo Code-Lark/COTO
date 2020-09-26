@@ -20,31 +20,50 @@ package cn.bytts.coto.fragment.bookshelf;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import butterknife.BindView;
+import cn.bytts.coto.DAO.UserInfoDAO;
 import cn.bytts.coto.R;
+import cn.bytts.coto.activity.GloVar;
 import cn.bytts.coto.adapter.ShlefAdapter;
 import cn.bytts.coto.adapter.base.delegate.SimpleDelegateAdapter;
 import cn.bytts.coto.adapter.entity.NewInfo;
+import cn.bytts.coto.bean.BookBean;
+import cn.bytts.coto.bean.BookDatasBean;
+import cn.bytts.coto.bean.JsonBean;
+import cn.bytts.coto.bean.UserInfoBean;
 import cn.bytts.coto.core.BaseFragment;
+import cn.bytts.coto.httpservice.HttpUtils;
+import cn.bytts.coto.utils.FileCacheUtil;
 import cn.bytts.coto.utils.Utils;
+import cn.bytts.coto.utils.service.JsonSerializationService;
 
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
+import com.xuexiang.xui.widget.statelayout.MultipleStatusView;
+import com.xuexiang.xui.widget.statelayout.StatefulLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.xuexiang.xutil.XUtil.getPackageManager;
+import static com.xuexiang.xutil.XUtil.runOnUiThread;
 
 /**
  * @author xuexiang
@@ -54,6 +73,8 @@ import static com.xuexiang.xutil.XUtil.getPackageManager;
 public class BookshelfFragment extends BaseFragment {
     @BindView(R.id.bookShelf)
     GridView bookShelf;
+    @BindView(R.id.multiple_status_view)
+    MultipleStatusView mMultipleStatusView;
 
     private int[] data = {
             R.drawable.cover_txt,R.drawable.cover_txt,R.drawable.cover_txt,R.drawable.cover_txt
@@ -65,6 +86,11 @@ public class BookshelfFragment extends BaseFragment {
 
 
     private List<ResolveInfo> apps;
+
+    HttpUtils httpUtils = new HttpUtils();
+    private String TAG = "BookshelfFragment";
+
+    ShlefAdapter adapter;
 
 
     /**
@@ -92,10 +118,13 @@ public class BookshelfFragment extends BaseFragment {
     protected void initViews() {
         bookShelf=findViewById(R.id.bookShelf);
 
-        ShlefAdapter adapter=new ShlefAdapter(data,name);
+        mMultipleStatusView.showContent();
+
+        adapter = new ShlefAdapter(booklist);
         bookShelf.setAdapter(adapter);
         bookShelf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+            //书籍点击事件
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
@@ -111,11 +140,78 @@ public class BookshelfFragment extends BaseFragment {
         loadApps();
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        booklist=new ArrayList<>();
 
+        String str=FileCacheUtil.getCache(getContext(),"bookShelf.txt");
+
+
+//        BookDatasBean bookDatasBean=new BookDatasBean();
+//        BookBean bookBean=new BookBean();
+//        bookBean.setName("ddd");
+//        bookDatasBean.setBook(bookBean);
+//        booklist.add(bookDatasBean);
+
+        GetBookShelf4Web getBookShelf4Web=new GetBookShelf4Web();
+        Thread thread=new Thread(getBookShelf4Web,"th1");
+
+        thread.start();
+    }
+
+
+    List<BookDatasBean> booklist;
+
+    class GetBookShelf4Web implements  Runnable{
+        @Override
+        public void run() {
+            try {
+
+                final String result = httpUtils.get("bookShelf", 100001);
+
+                Gson gson = new Gson();
+                JSONObject jsonObject=new JSONObject(result);
+                JSONArray jsonArr  =jsonObject.getJSONArray("data");// 接收JSON对象里的数组
+
+                BookBean bookBean;
+                String str;
+                //解析json数组
+                for (int i = 0; i < jsonObject.length(); i++) {
+                    JSONObject jsonTemp = (JSONObject)jsonArr.getJSONObject(i);
+                    BookDatasBean bookDatasBean=new BookDatasBean();
+
+
+                    bookDatasBean.setPercent(Integer.parseInt(jsonTemp.getString("percent")));
+                    bookDatasBean.setUpdate(Boolean.parseBoolean(jsonTemp.getString("update")));
+
+                    str = jsonTemp.getString("book");
+                    bookBean=gson.fromJson(str,BookBean.class);
+                    bookDatasBean.setBook(bookBean);
+
+                    booklist.add(bookDatasBean);
+                }
+
+                Log.i(TAG, "....run..........");
+
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                Log.e(TAG, "initViews", e);
+            }
+            //更新UI,在UI线程中
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.i(TAG, ".......runOnUiThread.......");
+
+                    adapter = new ShlefAdapter(booklist);
+                    bookShelf.setAdapter(adapter);
+                }
+            });
+        }
     }
 
 

@@ -21,6 +21,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
+import okhttp3.Call;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -42,6 +43,8 @@ public class HttpUtils {
         Response response = client.newCall(request).execute();
 
         String result = response.body().string();
+
+        Log.i("http-get",result);
         return result;
     }
 
